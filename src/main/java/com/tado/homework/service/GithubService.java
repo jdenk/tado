@@ -54,12 +54,10 @@ public final class GithubService {
     }
 
     public IssueDto getIssue(String issueId, UriComponentsBuilder uriComponentsBuilder) {
+        final String issueUri = GITHUB_ISSUE_URI_TEMPLATE.expand(account, repository, issueId).toASCIIString();
+
         try {
-
-            final String issueUri = GITHUB_ISSUE_URI_TEMPLATE.expand(account, repository, issueId).toASCIIString();
-
             return translateIssue(githubRestTemplate.get(issueUri, GithubIssueDto.class).getBody(), uriComponentsBuilder);
-
         } catch (HttpClientErrorException e) {
             if(e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 throw new IssueNotFoundException();

@@ -19,7 +19,7 @@ import java.net.URI;
 @RestController
 public class GithubApiController {
 
-    public static final String ISSUES_URI = "/api/issues";
+    private static final String ISSUES_URI = "/api/issues";
     public static final String ISSUE_URI =  ISSUES_URI +"/{issueId}";
 
     private final GithubService githubService;

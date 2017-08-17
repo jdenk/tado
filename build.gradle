@@ -31,7 +31,6 @@ dependencies {
 
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
 	testCompile('com.xebialabs.restito:restito:0.8.2')
 	testCompile('io.rest-assured:rest-assured:3.0.2')
 	testCompile('io.rest-assured:spring-mock-mvc:3.0.2')

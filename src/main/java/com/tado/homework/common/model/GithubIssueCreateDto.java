@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NONE;
+import static org.apache.commons.lang3.Validate.notEmpty;
 
 @JsonTypeInfo(use = NONE)
 public final class GithubIssueCreateDto {
@@ -18,6 +19,8 @@ public final class GithubIssueCreateDto {
 
     @JsonCreator
     public GithubIssueCreateDto(@JsonProperty("title") String title, @JsonProperty("body") String body) {
+        notEmpty(title, "title");
+
         this.title = title;
         this.body = body;
     }

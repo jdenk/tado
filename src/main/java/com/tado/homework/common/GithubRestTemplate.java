@@ -42,14 +42,14 @@ public final class GithubRestTemplate {
         notNull(requestEntity, "requestEntity");
         notNull(responseType, "responseType");
 
-        final String requestUrl = GITHUB_API_TEMPLATE.expand(hostName, uri, accessToken).toString();
+        final String requestUrl = GITHUB_API_TEMPLATE.expand(hostName, uri, accessToken).toASCIIString();
         return restTemplate.postForEntity(requestUrl, requestEntity, responseType);
     }
 
     public <T> ResponseEntity<T> get(String uri, Class<T> responseType) {
         notEmpty(uri, "uri");
 
-        final String requestUrl = GITHUB_API_TEMPLATE.expand(hostName, uri, accessToken).toString();
+        final String requestUrl = GITHUB_API_TEMPLATE.expand(hostName, uri, accessToken).toASCIIString();
         return restTemplate.getForEntity(requestUrl, responseType);
     }
 }

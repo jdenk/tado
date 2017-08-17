@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NONE;
+import static org.apache.commons.lang3.Validate.notEmpty;
 
 @JsonTypeInfo(use = NONE)
 public final class GithubIssueDto {
@@ -20,6 +21,9 @@ public final class GithubIssueDto {
     public GithubIssueDto(@JsonProperty("url") String url,
                           @JsonProperty("title") String title,
                           @JsonProperty("body") String body) {
+        notEmpty(url, "url");
+        notEmpty(title, "title");
+
         this.url = url;
         this.title = title;
         this.body = body;
